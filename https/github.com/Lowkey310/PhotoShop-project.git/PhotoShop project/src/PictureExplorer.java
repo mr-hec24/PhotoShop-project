@@ -878,7 +878,7 @@ public class PictureExplorer implements MouseMotionListener, ActionListener, Mou
 		  }
 	  if (a.getActionCommand().equals("Create Border"))
 		  {
-			  //PUT MEAGHAN'S FEATURE IN HERE
+			  ((SimplePicture)picture).createBorder();
 		  }
 	  if (a.getActionCommand().equals("Add Text"))
 		  {

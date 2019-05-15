@@ -4,6 +4,7 @@ import javax.swing.ImageIcon;
 import java.awt.*;
 import java.io.*;
 import java.awt.geom.*;
+import java.util.Random;
 
 /**
  * A class that represents a simple picture.  A simple picture may have
@@ -1108,7 +1109,7 @@ public class SimplePicture implements DigitalPicture
 		}
 
   /** Method to create a collage of several pictures */
-	public void createCollage()
+	public void createBorder()
 		{
 	    Picture flower1 = new Picture("flower1.jpg");
 	    Picture flower2 = new Picture("flower2.jpg");
@@ -1123,6 +1124,30 @@ public class SimplePicture implements DigitalPicture
 	    this.mirrorVertical();
 	    this.write("collage.jpg");
 		}
+	
+	
+
+	/** Method to create a collage of several pictures */
+		public void createCollage()
+			{
+			Random ran = new Random();
+			
+		    Picture flower1 = new Picture("flower1.jpg");
+		    Picture flower2 = new Picture("flower2.jpg");
+		    
+		    this.copy(flower1, ran.nextInt(500),ran.nextInt(300));
+		    this.copy(flower2,ran.nextInt(500),ran.nextInt(300));
+		    this.copy(flower1,ran.nextInt(500),ran.nextInt(300));
+		    
+		    Picture flowerNoBlue = new Picture(flower2);
+		    flowerNoBlue.zeroBlue();
+		    
+		    this.copy(flowerNoBlue,ran.nextInt(500),ran.nextInt(300));
+		    this.copy(flower2,ran.nextInt(500),ran.nextInt(300));
+		    this.copy(flower1,ran.nextInt(500),ran.nextInt(300));
+		    this.mirrorVertical();
+		    this.write("collage.jpg");
+			}
   /** Method to show large changes in color 
     * @param edgeDist the distance for finding edges
     */
